@@ -5,18 +5,13 @@
 	margin:0 auto;
 }
 
-/* footer{ */
-/* 	height:70px; */
-/* 	background-color: #dddddd; */
-/* } */
-
 section{
 		margin-top:100px;
 		background-color: #FFFFFF;
 }
 .contents> .user-box {
   	width: 400px;
-  	height : 400px;
+  	height : 420px;
     color: rgb(38, 50, 56);
     font-weight: 700;
     font-size: 14px;
@@ -40,7 +35,7 @@ section{
 }
 
 .logo {
-        padding-top: 40px;
+        padding-top: 28px;
         color:green;
         font-family: 'Ubuntu', sans-serif;
         font-weight: bold;

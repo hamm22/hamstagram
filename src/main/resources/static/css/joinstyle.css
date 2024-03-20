@@ -15,7 +15,7 @@ section{
 		background-color: #FFFFFF;
 }
 .contents> .user-box {
-  	width: 500px;
+  	width: 450px;
   	height : 540px;
     color: rgb(38, 50, 56);
     font-weight: 700;
@@ -35,7 +35,7 @@ section{
 }
 
 #joinBtn{
-	width: 456px;
+	width: 406px;
   	height : 38px;
 }
 
@@ -53,3 +53,8 @@ section{
   	height : 38px;
 	font-size: 12px;
     }
+    
+   
+#duplicateId{
+	text-align: right;
+}

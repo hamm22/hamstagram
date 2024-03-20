@@ -20,22 +20,15 @@
 					<input type="text" placeholder="아이디" class="form-control mt-3" id="idInput">
 					<button type="button" class="btn btn-success mt-3" id="duplicateBtn">중복확인</button>
 					</div>
-					<div class="small text-danger d-none" id="duplicateId">사용중인 아이디입니다.</div>
+					<div class="small text-danger d-none mt-1" id="duplicateId">사용중인 아이디입니다.</div>
 										
 					<input type="password" placeholder="비밀번호" class="form-control mt-3" id="passwordInput">
 					<input type="password" placeholder="비밀번호확인" class="form-control mt-3" id="passwordConfirmInput">
 					<input type="text" placeholder="이메일주소" class="form-control mt-3" id="emailInput">
 					<input type="text" placeholder="전화번호" class="form-control mt-3" id="phoneNumberInput">
-					<button type="button" class="btn btn-success mt-4" id="joinBtn">가입</button>	
+					<button type="button" class="btn btn-success mt-4" id="joinBtn">가입하기</button>	
 				</div>
 			</section>
-			
-<!-- 			<footer class="d-flex justify-content-center align-items-center"> -->
-			
-<!-- 				<div> -->
-<!-- 					Copyright 2024. ham All rights reserved. -->
-<!-- 				</div> -->
-<!-- 			</footer> -->
 		
 		</div>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
@@ -64,8 +57,8 @@
 				if(id == ""){
 					alert("id를 입력하세요");
 					return;
-				}
-			
+				} 
+				
 			$.ajax({
 				type:"get"
 				, url:"/user/duplicate-id"
@@ -89,6 +82,9 @@
 			
 			});
 			
+			// 영문 조합 비밀번호 설정
+			let regPass = /^(?=.*[a-zA-Z])(?=.*[0-9]).{6,20}$/;
+			
 			// 가입 버튼
 			$("#joinBtn").on("click", function() {
 					
@@ -98,6 +94,7 @@
 					let name = $("#nameInput").val();
 					let email = $("#emailInput").val();
 					let phoneNumber = $("#phoneNumberInput").val();
+	
 				
 					// 유효성 검사 
 					if(id == "") {
@@ -128,6 +125,31 @@
 						alert("전화번호를 입력하세요");
 						return ;
 					}
+					
+					if (password.length < 6 || password.length > 20) {
+						  alert("비밀번호는 6자리 이상 20자리 이하로 입력해야 합니다.");
+						  return;
+					}
+					
+					// 영문, 숫자 조합으로 비밀번호 설정
+					if(!regPass.test(password)){
+						alert("영문,숫자 조합으로 입력해주세요.");
+						return ;
+					} 
+					
+					// 중복아이디 가입 방지
+					if (isDuplicateId) {
+						  alert("아이디가 중복되었습니다. 다른 아이디를 입력해주세요.");
+						  return;
+					}
+					
+					// 010으로 시작하지않는 폰번호 가입 방지
+					if(!phoneNumber.startsWith("010") && !phoneNumber.startsWith("010") ){
+						alert("전화번호를 다시 입력해주세요");
+						return;
+					}
+					
+					
 				
 				$.ajax({
 					type:"post"
