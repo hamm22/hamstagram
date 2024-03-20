@@ -6,18 +6,19 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ham.sns.user.service.UserService;
-
+@RequestMapping("/user")
 @RestController
 public class UserRestController {
 	
 	@Autowired
 	private UserService userService;
 	
-	@PostMapping("/user/join")
+	@PostMapping("/join")
 	public Map<String, String> Join(@RequestParam("loginId")String loginId
 			,@RequestParam("password") String password
 			,@RequestParam("name") String name
@@ -36,7 +37,7 @@ public class UserRestController {
 	return resultMap;
 	}
 	
-	@GetMapping("/user/duplicate-id")
+	@GetMapping("/duplicate-id")
 	public Map<String, Boolean> isDupcliateId(@RequestParam("loginId")String loginId) {
 		
 		Map<String, Boolean> resultMap = new HashMap<>();

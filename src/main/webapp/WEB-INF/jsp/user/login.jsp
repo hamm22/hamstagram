@@ -17,7 +17,11 @@
 				 <p class="logo" align="center">LOGO</p>
 					<input type="text" placeholder="아이디" class="form-control mt-3">
 					<input type="password" placeholder="비밀번호" class="form-control mt-3">
-					<button type="button" class="btn btn-success mt-4" id="requestBtn">로그인</button>	
+					<button type="button" class="btn btn-success mt-4" id="requestBtn">로그인</button>
+					<hr class="mt-4">
+					<p class="addition mt-4" align="center"><a href="user/login">가입하기</a></p>	
+
+			
 				</div>
 			</section>
 			

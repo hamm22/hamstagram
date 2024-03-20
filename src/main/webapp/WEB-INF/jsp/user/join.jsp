@@ -21,8 +21,7 @@
 					<button type="button" class="btn btn-success mt-3" id="duplicateBtn">중복확인</button>
 					</div>
 					<div class="small text-danger d-none" id="duplicateId">사용중인 아이디입니다.</div>
-					
-					
+										
 					<input type="password" placeholder="비밀번호" class="form-control mt-3" id="passwordInput">
 					<input type="password" placeholder="비밀번호확인" class="form-control mt-3" id="passwordConfirmInput">
 					<input type="text" placeholder="이메일주소" class="form-control mt-3" id="emailInput">
@@ -89,8 +88,6 @@
 			});
 			
 			});
-			
-			
 			
 			// 가입 버튼
 			$("#joinBtn").on("click", function() {
