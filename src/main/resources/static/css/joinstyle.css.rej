@@ -1,0 +1,9 @@
+diff a/src/main/resources/static/css/joinstyle.css b/src/main/resources/static/css/joinstyle.css	(rejected hunks)
+@@ -55,5 +55,6 @@
+     }
+     
+    
++#duplicateId{
+ 	text-align: right;
+ }
+\ No newline at end of file
