@@ -3,7 +3,7 @@ package com.ham.sns.common;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class EncrytUtils {
+public class EncryptUtils {
 	
 public static String md5(String message){ // 이 메소드는 static으로 객체 생성없이 사용할 수 있음
 		

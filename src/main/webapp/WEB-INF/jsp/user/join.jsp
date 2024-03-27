@@ -37,14 +37,15 @@
 
 <script>
 	$(document).ready(function() {
-	
+					
 			// 중복 체크 확인
 			var isDuplicateCheck = false;
-			// 중복 상태
+			
+			// 아이디 중복 여부 저장 변수
 			var isDuplicateId = true;
 			
 			$("#idInput").on("input", function(){
-				// 중복체크 확인, 중복상태 변수값 초기화
+				// 중복확인 과정을 리셋한다. 중복체크 확인, 중복상태 변수값 초기화
 				isDuplicateCheck = false;
 				isDuplicateId = true;
 				$("#duplicateId").addClass("d-none");
@@ -64,8 +65,10 @@
 				, url:"/user/duplicate-id"
 				, data:{"loginId":id}
 				, success:function(data) {
+					// 중복 체크 완료
 					isDuplicateCheck = true;
- 					// 중복됨 {"isDuplicate":true}
+ 					
+					// 중복됨 {"isDuplicate":true}
  					// 중복 안됨 {"isDuplicate":false}
 					if(data.isDuplicate) {
 					isDuplicateId = true;
@@ -94,12 +97,23 @@
 					let name = $("#nameInput").val();
 					let email = $("#emailInput").val();
 					let phoneNumber = $("#phoneNumberInput").val();
-	
 				
 					// 유효성 검사 
 					if(id == "") {
 						alert("아이디를 입력하세요");
 						return ;
+					}
+					
+					// 중복체크
+					if (!isDuplicateCheck) {
+						  alert("아이디 중복체크를 진행해주세요.");
+						  return;
+					}
+					
+					// 중복아이디 가입 방지
+					if (isDuplicateId) {
+						  alert("아이디가 중복되었습니다. 다른 아이디를 입력해주세요.");
+						  return;
 					}
 					
 					if(password == "") {
@@ -137,19 +151,11 @@
 						return ;
 					} 
 					
-					// 중복아이디 가입 방지
-					if (isDuplicateId) {
-						  alert("아이디가 중복되었습니다. 다른 아이디를 입력해주세요.");
-						  return;
-					}
-					
 					// 010으로 시작하지않는 폰번호 가입 방지
 					if(!phoneNumber.startsWith("010") && !phoneNumber.startsWith("010") ){
 						alert("전화번호를 다시 입력해주세요");
 						return;
 					}
-					
-					
 				
 				$.ajax({
 					type:"post"
@@ -171,7 +177,6 @@
 			});
 			
 		});
-	
 	
 	</script>
 </body>
