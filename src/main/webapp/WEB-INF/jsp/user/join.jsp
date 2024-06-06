@@ -160,7 +160,7 @@
 				$.ajax({
 					type:"post"
 					, url:"/user/join"
-						, data:{"name":name, "loginId":id, "password":password, "email":email, "phoneNumber":phoneNumber}
+					, data:{"name":name, "loginId":id, "password":password, "email":email, "phoneNumber":phoneNumber}
 					, success:function(data) {
 						if(data.result == "success") {
 							location.href = "/user/login-view";

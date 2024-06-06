@@ -14,7 +14,6 @@ import com.ham.sns.post.service.PostService;
 import jakarta.servlet.http.HttpSession;
 
 
-
 @RequestMapping("/post")
 @Controller
 public class PostController {
@@ -27,20 +26,17 @@ public class PostController {
 		return "post/timeline";
 	}
 	
-	@GetMapping("/create-view2")
-	public String inputPost() {
-		return "post/input";
-	}
-	
 	@GetMapping("/timeline-view")
 	public String Timeline(Model model
 							, HttpSession session) {
-	
-	List<PostDetail> postList = postService.getPostList();
-	
-	model.addAttribute("postList", postList);
 		
-	return "post/timeline";
+		int userId = (Integer)session.getAttribute("userId");
+		
+		List<PostDetail> postList = postService.getPostList(userId);
+		
+		model.addAttribute("postList", postList);
+		
+		return "post/timeline";
 	}
 
 }

@@ -62,6 +62,7 @@ public class UserRestController {
 		Map<String, String> resultMap = new HashMap<>();
 
 		if (user != null) {
+			// 로그인 성공
 			resultMap.put("result", "success");
 
 			// 조회된 사용자 정보를 세션에 저장하는 과정
@@ -72,6 +73,7 @@ public class UserRestController {
 			session.setAttribute("userLoginId", user.getLoginId());
 			
 		} else {
+			// 로그인 실패
 			resultMap.put("result", "fail");
 		}
 		return resultMap;

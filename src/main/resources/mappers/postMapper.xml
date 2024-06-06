@@ -7,7 +7,7 @@
  
  	<insert id="insertPost" parameterType="map">
  	
- 	INSERT INTO
+ 		INSERT INTO
 			`post`
 		(
 			`userId`
@@ -33,10 +33,31 @@
 			, `updatedAt`
 		FROM
 			`post`
-<!-- 		WHERE -->
-<!-- 			`userId` = #{userId} -->
 		ORDER BY
 			`id` DESC
 	</select>
+	
+	<select id="selectPost" parameterType="int"
+		resultType="com.ham.sns.post.domain.Post">
+		SELECT 
+			`id`
+			, `userId`
+			, `contents`
+			, `imagePath`
+			, `createdAt`
+			, `updatedAt`
+		FROM 
+			`post`
+		WHERE 
+			`id` = #{id}
+	</select>
+	
+	<delete id="deletePost" parameterType="int">
+		
+		DELETE FROM
+			`post`
+		WHERE
+			`id` = #{id}
+	</delete>
  	
  </mapper>

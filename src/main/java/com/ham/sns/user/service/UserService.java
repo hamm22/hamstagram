@@ -34,8 +34,9 @@ public class UserService {
 		return userRepository.selectUserByLoginIdAndPassword(loginId, encryptPassword);
 	}
 	
-	// 사용자 정볼 조회
+	// 사용자 정보를 조회
 	public User getUser(int id) {
 		return userRepository.selectUser(id);
 	}
+
 }
